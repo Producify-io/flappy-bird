@@ -26,7 +26,6 @@ jobs:
           - "Ninja Multi-Config"
         build_type:
           - Release
-          - Debug
 
         exclude:
           # mingw is determined by this author to be too buggy to support
