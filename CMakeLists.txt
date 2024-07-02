@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
 
-# set project C standard (if applicable)
-set(CMAKE_C_EXTENSIONS OFF) # turn off compiler extensions
-set(CMAKE_C_STANDARD 11) # C11
-set(CMAKE_C_STANDARD_REQUIRED)
-
 project(
   flappy-bird
   LANGUAGES C CXX
@@ -38,6 +33,10 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 endif()
 
 # Our Project
+# set project C standard (if applicable)
+set(CMAKE_C_EXTENSIONS OFF) # turn off compiler extensions
+set(CMAKE_C_STANDARD 11) # C11
+set(CMAKE_C_STANDARD_REQUIRED)
 
 add_executable(${PROJECT_NAME})
 add_subdirectory(src)
