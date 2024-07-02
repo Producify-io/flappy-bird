@@ -1,12 +1,10 @@
 name: ci
 on:
   pull_request:
-    branches: [ main ]
   release:
     types: [published]
   push:
-    tags:
-    branches:
+    branches: 
       - main
 
 jobs:
@@ -33,6 +31,17 @@ jobs:
           - os: windows-latest
             compiler: gcc
 
+        include:
+          - os: windows-latest
+            compiler: msvc
+            generator: "Visual Studio 17 2022"
+            build_type: Release
+
+          - os: windows-latest
+            compiler: msvc
+            generator: "Ninja Multi-Config"
+            build_type: Release
+            
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -54,6 +63,9 @@ jobs:
           ninja: true
           vcpkg: false
           ccache: true
+          gcovr: false
+          opencppcoverage: false
+          clangtidy: false
       
       - name: Unix - Install required libraries
         if: runner.os != 'Windows'
