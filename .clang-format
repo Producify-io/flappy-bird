@@ -27,7 +27,6 @@ AlignConsecutiveDeclarations:
     Enabled: true
     AcrossEmptyLines: true
     AcrossComments: true
-    AlignFunctionPointers: true
 AlignConsecutiveMacros: Consecutive
 AlignConsecutiveShortCaseStatements: # v17
     Enabled: true

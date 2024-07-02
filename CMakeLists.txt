@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
 
-# set project C standard (if applicable)
-set(CMAKE_C_EXTENSIONS OFF) # turn off compiler extensions
-set(CMAKE_C_STANDARD 11) # C11
-set(CMAKE_C_STANDARD_REQUIRED)
-
 project(
   flappy-bird
   LANGUAGES C CXX
@@ -38,6 +33,10 @@ if (NOT raylib_FOUND) # If there's none, fetch and build raylib
 endif()
 
 # Our Project
+# set project C standard (if applicable)
+set(CMAKE_C_EXTENSIONS OFF) # turn off compiler extensions
+set(CMAKE_C_STANDARD 11) # C11
+set(CMAKE_C_STANDARD_REQUIRED)
 
 add_executable(${PROJECT_NAME})
 add_subdirectory(src)
@@ -77,11 +76,4 @@ if (${PLATFORM} STREQUAL "Web")
   # Tell Emscripten to build an example.html file.
   set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
   target_link_options(${PROJECT_NAME} PUBLIC "-sUSE_GLFW=3")
-endif()
-
-# Checks if OSX and links appropriate frameworks (Only required on MacOS)
-if (APPLE)
-  target_link_libraries(${PROJECT_NAME} "-framework IOKit")
-  target_link_libraries(${PROJECT_NAME} "-framework Cocoa")
-  target_link_libraries(${PROJECT_NAME} "-framework OpenGL")
 endif()
